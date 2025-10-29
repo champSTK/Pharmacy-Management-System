@@ -110,7 +110,7 @@ class PharmacyManagementSystem:
         Framedetails=Frame(self.root,bd=15,padx=20,relief=RIDGE)
         Framedetails.place(x=0,y=590,width=1530,height=210)
 
-        conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+        conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("select Ref from pharma")
         r=my_cursor.fetchall()
@@ -141,7 +141,7 @@ class PharmacyManagementSystem:
 
 
         #--------AddMedicine-----------
-        conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+        conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("select MedName from pharma")
         ide=my_cursor.fetchall()
@@ -364,7 +364,7 @@ class PharmacyManagementSystem:
             messagebox.showerror("Error", "All fields are required")
             return
         
-        conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+        conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("insert into pharma(Ref,MedName) values(%s,%s)",(
                                                                                     self.refMed_var.get(),
@@ -392,7 +392,7 @@ class PharmacyManagementSystem:
             conn = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="sqlserver@123",
+                password=".",
                 database="mydata"
             )
             my_cursor = conn.cursor()
@@ -439,7 +439,7 @@ class PharmacyManagementSystem:
             conn = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="sqlserver@123",
+                password=".",
                 database="mydata"
             )
             my_cursor = conn.cursor()
@@ -489,7 +489,7 @@ class PharmacyManagementSystem:
         if self.refMed_var.get()=="" or self.addmed_var.get()=="":
             messagebox.showerror("Error","All fields are Required")
         else:
-            conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+            conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
             my_cursor=conn.cursor()
             my_cursor.execute("update pharma set MedName=%s where Ref=%s",(
                                                                             self.addmed_var.get(),
@@ -503,7 +503,7 @@ class PharmacyManagementSystem:
 
 
     def DeleteMed(self):
-        conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+        conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
         my_cursor=conn.cursor()
 
         sql="delete from pharma where Ref=%s"
@@ -527,7 +527,7 @@ class PharmacyManagementSystem:
             return
         
         try:
-            conn = mysql.connector.connect(host="localhost", user="root", password="sqlserver@123", database="mydata")
+            conn = mysql.connector.connect(host="localhost", user="root", password=".", database="mydata")
             my_cursor = conn.cursor()
 
             # ✅ Check if Ref and Medicine Name exist in pharma
@@ -578,7 +578,7 @@ class PharmacyManagementSystem:
 
 
     def fetch_data(self):
-        conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+        conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from pharmacy")
         row=my_cursor.fetchall()
@@ -614,7 +614,7 @@ class PharmacyManagementSystem:
         if self.ref_var.get()=="" or self.lot_var.get()=="":
             messagebox.showerror("Error","All fields are Required")
         else:
-            conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+            conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
             my_cursor=conn.cursor()
             my_cursor.execute("update pharmacy set cmpName=%s,Type=%s,medname=%s,lot=%s,issuedate=%s,expdate=%s,uses=%s,sideeffect=%s,warning=%s,dosage=%s,price=%s,product=%s where refno=%s",(
 
@@ -643,7 +643,7 @@ class PharmacyManagementSystem:
 
 
     def delete(self):
-        conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+        conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
         my_cursor=conn.cursor()
 
         sql="delete from pharmacy where refno=%s"
@@ -677,7 +677,7 @@ class PharmacyManagementSystem:
 
 
     def search_data(self):
-        conn=mysql.connector.connect(host="localhost",user="root",password="sqlserver@123",database="mydata")
+        conn=mysql.connector.connect(host="localhost",user="root",password=".",database="mydata")
         my_cursor=conn.cursor()
         my_cursor.execute("select * from pharmacy where " +str(self.search_var.get())+" LIKE '%"+str(self.serchTxt_var.get())+"%'")
 
